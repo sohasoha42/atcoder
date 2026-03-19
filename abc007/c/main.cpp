@@ -28,19 +28,19 @@ int main() {
   queue<pair<int, int>> que;
   que.push({sy, sx});
 
-  int dx[4] = {1, 0, -1, 0}, dy[4] = {0, 1, 0, -1};
+  int dy[4] = {1, 0, -1, 0}, dx[4] = {0, 1, 0, -1};
 
   while (que.size() > 0) {
-    pair<int, int> now = que.front();
+    auto [y, x] = que.front();
     que.pop();
 
     for (int i = 0; i < 4; ++i) {
-      if (0 <= now.first + dy[i] && now.first + dy[i] < r &&
-          0 <= now.second + dx[i] && now.second + dx[i] < c &&
-          d[now.first + dy[i]][now.second + dx[i]] == -1 &&
-          grid[now.first][now.second] == '.') {
-        d[now.first + dy[i]][now.second + dx[i]] = d[now.first][now.second] + 1;
-        que.push({now.first + dy[i], now.second + dx[i]});
+      int ny = y + dy[i];
+      int nx = x + dx[i];
+      if (0 <= ny && ny < r && 0 <= nx && nx < c && d[ny][nx] == -1 &&
+          grid[ny][nx] == '.') {
+        d[ny][nx] = d[y][x] + 1;
+        que.push({ny, nx});
       }
     }
   }
