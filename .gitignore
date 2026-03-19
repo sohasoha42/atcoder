@@ -10,7 +10,7 @@ wheels/
 .venv
 
 main.dSYM/
-tests/
+test/
 a.out
 main
 contest.acc.json
